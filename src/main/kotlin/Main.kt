@@ -26,6 +26,9 @@ fun main(args: Array<String>) {
     println(maxTurbulenceSize(intArrayOf(4, 8, 12, 16)))
     println(maxTurbulenceSize(intArrayOf(0)))
     println(maxTurbulenceSize(intArrayOf()))
+
+
+    println(lengthOfLongestSubstring("pwwkew"))
 }
 
 fun twoOldestAges(ages: List<Int>): List<Int> {
@@ -69,6 +72,24 @@ fun maxTurbulenceSize(arr: IntArray): Int {
     return result
 }
 
+fun lengthOfLongestSubstring(s: String): Int {
+    val charList = ArrayList<Char>()
+    var result = 0
+    var resultCurrent = 0
+
+    for (char in s){
+        if (charList.contains(char)){
+            result = maxOf(resultCurrent, result)
+            resultCurrent = 0
+            charList.clear()
+        } else {
+            charList.add(char)
+            resultCurrent++
+        }
+    }
+
+    return maxOf(resultCurrent, result)
+}
 
 
 
